@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang = "en-US">
+ <head>
+  <title></title>
+ <meta charset = "UTF-8">
+ <link rel = "stylesheet" type = "text/css" href = "appStyle.css" />
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+<script src="app.js"></script>
+
+
+</head>
+
+<body ng-app="myModule">
+  <div ng-controller="myController">
+    
+    <table id="customers">
+      <thead>
+        <tr>
+          <th>
+           <a href="#" ng-click="sortBy('userId')">
+          UserId
+           <span ng-show="orderByField == 'userId'">
+           <span ng-show="!reverseSort">^</span>
+           <span ng-show="reverseSort">v</span></span>
+          </a>
+        </th>
+          <!--orderByField='id'; reverseSort = !reverseSort!-->
+         <th><a href="#" ng-click="sortBy('id')">
+         ID<span ng-show="orderByField == 'id'"><span ng-show="!reverseSort">^</span>
+           <span ng-show="reverseSort">v</span></span>
+          </a>
+         </th>
+
+          <th>
+          <a href="#" ng-click="sortBy('title')">
+           Title<span ng-show="orderByField == 'title'"><span ng-show="!reverseSort">^</span>
+           <span ng-show="reverseSort">v</span></span>
+          </a>
+          </th>
+
+
+          <th>
+         <a href="#" ng-click="sortBy('body')">
+         <span ng-show="orderByField == 'body'"><span ng-show="!reverseSort">^</span>
+           <span ng-show="reverseSort">v</span></span>
+          Body</a>
+	 </th>
+
+        </tr>
+
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in employees|orderBy:orderByField:reverseSort">
+          <td>{{employee.userId}}</td>
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.title}}</td>
+          <td>{{ employee.body}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+
+</html>
